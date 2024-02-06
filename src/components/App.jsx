@@ -17,8 +17,8 @@ export class App extends Component {
         'https://pixabay.com/api/?key=42226095-985f5f3f7d80b9b4b7d7fcb50&image_type=photo&per_page=12'
       )
       .then(({ data }) => {
-           const {hits} = data;
-          this.setState({images: hits});
+        const { hits } = data;
+        this.setState({ images: hits });
       });
   }
   render() {
