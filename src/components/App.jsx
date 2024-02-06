@@ -1,11 +1,22 @@
-import ImageGallery from './ImageGallery/ImageGallery'
+import { Component } from 'react';
 
+import ImageGallery from './ImageGallery/ImageGallery';
+import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 
-export const App = () => {
+export class App extends Component {
+  state = {
+    images: [],
+  };
 
-  return (
-    <div>
-      <ImageGallery/>
-    </div>
-  );
-};
+  render() {
+    const { images } = this.state;
+
+    return (
+      <div>
+        <ImageGallery>
+          <ImageGalleryItem images={images} />
+        </ImageGallery>
+      </div>
+    );
+  }
+}
