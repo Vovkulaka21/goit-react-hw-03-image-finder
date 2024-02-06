@@ -1,4 +1,4 @@
-.Searchbar {
+.searchbar {
     top: 0;
     left: 0;
     position: sticky;
@@ -16,7 +16,7 @@
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
       0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   }
-  .SearchForm {
+  .searchbar_form {
     display: flex;
     align-items: center;
     width: 100%;
@@ -26,12 +26,12 @@
     overflow: hidden;
   }
   
-  .SearchForm-button {
+  .searchbar_form_button {
     display: inline-block;
     width: 48px;
     height: 48px;
     border: 0;
-    background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+    background-image: url('https://img.icons8.com/ios/50/search--v1.png');
     background-size: 40%;
     background-repeat: no-repeat;
     background-position: center;
@@ -41,11 +41,11 @@
     outline: none;
   }
   
-  .SearchForm-button:hover {
+  .searchbar_form_button:hover {
     opacity: 1;
   }
   
-  .SearchForm-button-label {
+  .searchbar_form_button_label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -57,7 +57,7 @@
     border: 0;
   }
   
-  .SearchForm-input {
+  .searchbar_form_input {
     display: inline-block;
     width: 100%;
     font: inherit;
@@ -68,7 +68,7 @@
     padding-right: 4px;
   }
   
-  .SearchForm-input::placeholder {
+  .searchbar_form_input::placeholder {
     font: inherit;
     font-size: 18px;
   }
