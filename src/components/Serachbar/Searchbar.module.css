@@ -42,6 +42,11 @@
   }
   
   .searchbar_form_button:hover {
+    background-color: #00ffff;
+    opacity: 1;
+  }
+  .searchbar_form_button:focus {
+    background-color: #00ffff;
     opacity: 1;
   }
   
