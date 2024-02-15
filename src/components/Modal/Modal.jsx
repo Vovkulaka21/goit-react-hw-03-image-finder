@@ -12,9 +12,12 @@ class Modal extends Component {
     document.addEventListener("keydown", this.closeModal)
   }
 
+  componenWillUnmount() {
+    document.removeEventListener("keydown", this.closeModal)
+  }
 
   closeModal = ({target, currentTarget, code}) => {
-    
+
     if(target === currentTarget || code === "Escape") {
       this.props.close()
     }
