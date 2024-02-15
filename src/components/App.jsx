@@ -8,6 +8,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 import Loader from './Loader/Loader';
 import Button from './Button/Button';
+import Modal from './Modal/Modal';
 
 export class App extends Component {
   state = {
@@ -18,7 +19,7 @@ export class App extends Component {
     error: null,
   };
 
-  async componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(_, prevState) {
     const { page, search } = this.state;
     if (search && (search !== prevState.search || page !== prevState.page)) {
       this.setState({
@@ -43,6 +44,8 @@ export class App extends Component {
   handleSearch = ({ search }) => {
     this.setState({
       search,
+      images: [],
+      page: 1,
     });
   };
 
@@ -66,6 +69,7 @@ export class App extends Component {
             <Button onClick={this.pageRiser} />
           )}
         </div>
+        <Modal image={this.state.image.largeImageURL}/>
       </>
     );
   }

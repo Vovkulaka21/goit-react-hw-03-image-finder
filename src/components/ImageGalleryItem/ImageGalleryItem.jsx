@@ -6,7 +6,7 @@ const ImageGalleryItem = ({ images }) => {
       <img
         className={css.gallery_item_image}
         src={image.webformatURL}
-        alt="ВАСЯ"
+        alt="img"
       />
     </li>
   ));
