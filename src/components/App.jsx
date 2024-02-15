@@ -1,7 +1,7 @@
 import css from './App.module.css';
 
 import { Component } from 'react';
-import { imageGallery, searchImages } from 'api/gallery';
+import { searchImages } from 'api/gallery';
 
 import Searchbar from './Serachbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
@@ -18,35 +18,18 @@ export class App extends Component {
     error: null,
   };
 
-  async componentDidMount() {
-    this.setState({ loading: true });
-    try {
-      const { data } = await imageGallery(this.state.page);
-      const { hits } = data;
-      this.setState({
-        images: hits?.length ? hits : [],
-      });
-    } catch (error) {
-      this.setState({
-        error: error.message,
-      });
-    } finally {
-      this.setState({ loading: false });
-    }
-  }
-
   async componentDidUpdate(prevProps, prevState) {
     const { page, search } = this.state;
-    if (search && search !== prevState.search) {
+    if (search && (search !== prevState.search || page !== prevState.page)) {
       this.setState({
         loading: true,
       });
       try {
         const { data } = await searchImages(search, page);
         const { hits } = data;
-        this.setState({
-          images: hits?.length ? hits : [],
-        });
+        this.setState(({ images }) => ({
+          images: hits?.length ? [...images, ...hits] : images,
+        }));
       } catch (error) {
         this.setState({
           error: error.message,
@@ -66,7 +49,7 @@ export class App extends Component {
   pageRiser = () => {
     this.setState(({ page }) => ({ page: page + 1 }));
   };
-  
+
   render() {
     return (
       <>

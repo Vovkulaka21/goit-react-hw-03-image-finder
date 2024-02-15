@@ -8,14 +8,9 @@ const instance = axios.create({
     image_type: "photo",
     orientation: "horizontal",
     per_page: 12,
-    page: 1,
   }
 });
 
-export const imageGallery = () => {
-  return instance.get(`/`);
-};
-
-export const searchImages = (q) => {
-  return instance.get(`/?q=${q}`)
+export const searchImages = (q, page) => {
+  return instance.get(`/?q=${q}&page=${page}`)
 }
