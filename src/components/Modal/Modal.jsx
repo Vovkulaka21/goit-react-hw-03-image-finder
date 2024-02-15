@@ -22,6 +22,7 @@ class Modal extends Component {
       this.props.close()
     }
   }
+  
   render() {
     const { children} = this.props;
     return createPortal(
