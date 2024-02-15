@@ -17,6 +17,8 @@ export class App extends Component {
     page: 1,
     loading: false,
     error: null,
+    modalOpen: false,
+    largeImage: ''
   };
 
   async componentDidUpdate(_, prevState) {
@@ -53,6 +55,18 @@ export class App extends Component {
     this.setState(({ page }) => ({ page: page + 1 }));
   };
 
+showModal = (largeImageURL) => 
+this.setState({
+  modalOpen: true,
+  largeImage: largeImageURL
+});
+
+closeModal = () => {
+  this.setState({
+    modalOpen: false,
+  });
+}
+
   render() {
     return (
       <>
@@ -62,14 +76,14 @@ export class App extends Component {
           {this.state.loading && <Loader />}
           {Boolean(this.state.images.length) && (
             <ImageGallery>
-              <ImageGalleryItem images={this.state.images} />
+              <ImageGalleryItem showModal={this.showModal} images={this.state.images} />
             </ImageGallery>
           )}
           {Boolean(this.state.images.length) && (
             <Button onClick={this.pageRiser} />
           )}
         </div>
-        <Modal image={this.state.image.largeImageURL}/>
+        {this.state.modalOpen && <Modal close={this.closeModal}><img src={this.state.largeImage} alt="img" /></Modal>}
       </>
     );
   }
