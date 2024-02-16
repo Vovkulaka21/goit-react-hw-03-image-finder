@@ -73,12 +73,12 @@ closeModal = () => {
         <Searchbar onSubmit={this.handleSearch} />
         <div className={css.app_box}>
           {this.state.error && <p>{this.state.error}</p>}
-          {this.state.loading && <Loader />}
           {Boolean(this.state.images.length) && (
             <ImageGallery>
               <ImageGalleryItem showModal={this.showModal} images={this.state.images} />
             </ImageGallery>
           )}
+          {this.state.loading && <Loader />}
           {Boolean(this.state.images.length) && (
             <Button onClick={this.pageRiser} />
           )}
